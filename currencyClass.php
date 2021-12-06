@@ -7,7 +7,7 @@ class currencyClass
      * @return string|array
      */
 
-    public static function getCurrency(mixed $country): string|array
+    public static function getCurrencyToUAH(mixed $country): string|array
     {
         $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
         $data = file_get_contents($url);
