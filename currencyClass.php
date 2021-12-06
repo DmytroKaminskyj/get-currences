@@ -1,6 +1,6 @@
 <?php
 
-class currencyClass
+class Currency
 {
     /**
      * @param mixed $country
