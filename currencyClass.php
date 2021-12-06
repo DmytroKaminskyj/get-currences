@@ -3,7 +3,8 @@
 class Currency
 {
     /**
-     * @param mixed $country
+     * @param mixed $country    --  country code like "USD" or "EUR".
+     *
      * @return string|array
      */
 
