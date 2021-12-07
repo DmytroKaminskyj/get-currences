@@ -3,15 +3,20 @@
 class Currency
 {
     /**
-     * @param mixed $country    --  country code like "USD" or "EUR".
-     *
+     * @var string  - {URL National Bank of Ukraine.}
+     */
+    private static string $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
+
+    /**
+     * @param mixed $country   --  {country code like "USD" or "EUR".}
+     * @param $url
      * @return string|array
      */
 
-    public static function getCurrencyToUAH(mixed $country): string|array
+    public static function getCurrencyUAH(mixed $country): string|array
     {
-        $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
-        $data = file_get_contents($url);
+
+        $data = file_get_contents(self::$url);
         $data = json_decode($data, true);
         $currency = [];
 
@@ -28,10 +33,10 @@ class Currency
                 }
             }
             return $currency;
-
         }
 
         foreach ($data as $countries) {
+
             if ($countries['cc'] === $country) {
                 $currency[$country] = [
                     "rate" => $countries['rate'],
@@ -40,7 +45,7 @@ class Currency
             }
         }
 
-
         return $currency;
     }
+
 }
