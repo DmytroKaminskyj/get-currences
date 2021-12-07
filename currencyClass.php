@@ -9,7 +9,6 @@ class Currency
 
     /**
      * @param mixed $country   --  {country code like "USD" or "EUR".}
-     * @param $url
      * @return string|array
      */
 
