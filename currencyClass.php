@@ -8,7 +8,7 @@ class Currency
     protected static string $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
 
     /**
-     * @param mixed $country   --  {country code like "USD" or "EUR".}
+     * @param mixed $country --  {country code like "USD" or "EUR".}
      * @return string|array
      */
 
@@ -52,13 +52,13 @@ class Currency
      * @return array - {return all country code from National Bank of Ukraine.}
      */
 
-    public static function getCountryCode (): array
+    public static function getCountryCodeList(): array
     {
         $data = file_get_contents(self::$url);
         $data = json_decode($data, true);
         $countryside = [];
 
-        foreach ($data as $item){
+        foreach ($data as $item) {
             $countryside[] = $item['cc'];
         }
         return $countryside;
