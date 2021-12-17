@@ -52,7 +52,7 @@ class Currency
      * @return array - {return all country code from National Bank of Ukraine.}
      */
 
-    public static function getCountryCodeList(): array
+    public static function getCountryList(): array
     {
         $data = file_get_contents(self::$url);
         $data = json_decode($data, true);
