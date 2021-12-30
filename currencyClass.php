@@ -5,12 +5,12 @@ declare(strict_types=1);
 class Currency
 {
     /**
-     * @var string  - {URL National Bank of Ukraine.}
+     * @var string  URL National Bank of Ukraine.
      */
-    protected static string $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
+    private static string $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
 
     /**
-     * @param mixed $country --  {country code like "USD" or "EUR".}
+     * @param mixed $country  country code like string - "USD","EUR" or array $foo = ["USD","EUR"];.
      * @return string|array
      */
 
