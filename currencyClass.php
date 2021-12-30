@@ -10,19 +10,19 @@ class Currency
     private static string $url = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
 
     /**
-     * @param mixed $country  country code like string - "USD","EUR" or array $foo = ["USD","EUR"];.
+     * @param mixed $countryCode  country code like string - "USD","EUR" or array $foo = ["USD","EUR"];.
      * @return string|array
      */
 
-    public static function getCurrencyUAH(mixed $country): string|array
+    public static function getCurrencyUAH(string|array $countryCode): string|array
     {
 
         $data = file_get_contents(self::$url);
         $data = json_decode($data, true);
         $currency = [];
 
-        if (is_array($country)) {
-            foreach ($country as $item) {
+        if (is_array($countryCode)) {
+            foreach ($countryCode as $item) {
 
                 foreach ($data as $countries) {
                     if ($countries['cc'] === $item) {
@@ -39,8 +39,8 @@ class Currency
 
         foreach ($data as $countries) {
 
-            if ($countries['cc'] === $country) {
-                $currency[$country] = [
+            if ($countries['cc'] === $countryCode) {
+                $currency[$countryCode] = [
                     "rate" => $countries['rate'],
                     "exchange-date" => $countries['exchangedate']
                 ];
