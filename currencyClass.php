@@ -11,10 +11,10 @@ class Currency
 
     /**
      * @param mixed $countryCode  country code like string - "USD","EUR" or array $foo = ["USD","EUR"];.
-     * @return string|array
+     * @return array
      */
 
-    public static function getCurrencyUAH(string|array $countryCode): string|array
+    public static function getCurrencyUAH(string|array $countryCode): array
     {
 
         $data = file_get_contents(self::$url);
